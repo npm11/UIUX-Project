@@ -10,10 +10,10 @@ const SignUp = () => {
 
   return (
     <View style={styles.signUp}>
-      <View style={styles.pageHeader}>
-        <View style={styles.logoWrapper}>
+      <View style={styles.header}>
+        <View style={styles.logoContainer}>
           <Image
-            style={styles.logoChild}
+            style={styles.logo}
             contentFit="cover"
             source={require("../assets/group-1.png")}
           />
@@ -74,24 +74,25 @@ const SignUp = () => {
           information.
         </Text>
       </View>
+      <Text style={styles.alreadyHaveAnAccount}>
+        Already have an account? <Text style={styles.logIn}>Log in</Text>
+      </Text>
       <Pressable
         style={styles.signUpButton}
         onPress={() => navigation.navigate("Activities")}
       >
         <Text style={styles.signUpButtonText}>Sign Up</Text>
       </Pressable>
-      <Text style={styles.alreadyHaveAnAccount}>
-        Already have an account? <Text style={styles.logIn}>Log in</Text>
-      </Text>
+
       <Text style={styles.orSignUpWith}>Or Sign Up With</Text>
       <View style={styles.socialIcons}>
         <Image
-          style={styles.socialIcon}
+          style={[styles.socialIcon, styles.googleIcon]}
           contentFit="cover"
           source={require("../assets/googleicon.png")}
         />
         <Image
-          style={styles.socialIcon}
+          style={[styles.socialIcon, styles.facebookIcon]}
           contentFit="cover"
           source={require("../assets/facebookicon.png")}
         />
@@ -117,15 +118,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     justifyContent: "space-between",
   },
-  pageHeader: {
+  header: {
     alignItems: "center",
     marginTop: 50,
   },
-  logoWrapper: {
+  logoContainer: {
+    flexDirection: "row",
     alignItems: "center",
     marginBottom: 20,
   },
-  logoChild: {
+  logo: {
     width: 44,
     height: 51,
   },
@@ -148,12 +150,13 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
     textAlign: "center",
+    marginBottom: 25,
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 0,
   },
   inputText: {
-    marginBottom: 15,
+    marginBottom: 20,
     position: "relative",
   },
   bgIcon: {
@@ -184,7 +187,8 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 12,
+    marginTop: -20,
   },
   checkbox: {
     marginRight: 10,
@@ -209,13 +213,14 @@ const styles = StyleSheet.create({
     fontSize: FontSize.uI14Regular_size,
     fontFamily: FontFamily.uI14Regular,
     color: Color.gray04,
+    marginBottom: -10,
   },
   signUpButton: {
     backgroundColor: Color.colorRoyalblue_100,
     borderRadius: Border.br_81xl,
     paddingVertical: Padding.p_base,
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 0,
   },
   signUpButtonText: {
     color: Color.white,
@@ -228,7 +233,7 @@ const styles = StyleSheet.create({
     color: Color.colorDarkslategray_100,
     fontSize: FontSize.size_smi,
     fontFamily: FontFamily.poppinsRegular,
-    marginBottom: 20,
+    marginBottom: 0,
   },
   logIn: {
     textDecorationLine: "underline",
@@ -237,9 +242,9 @@ const styles = StyleSheet.create({
   orSignUpWith: {
     textAlign: "center",
     fontSize: FontSize.bodyTextRegular_size,
-    fontFamily: FontFamily.uI14Semi,
+    fontFamily: FontFamily.uI14Regular, // Changed to regular font
     color: Color.colorGray_300,
-    marginBottom: 20,
+    marginBottom: 0,
   },
   socialIcons: {
     flexDirection: "row",
@@ -249,17 +254,18 @@ const styles = StyleSheet.create({
   socialIcon: {
     width: 48,
     height: 48,
-    marginHorizontal: 10,
+    marginHorizontal: 20, // Increased spacing between icons
   },
   footer: {
+    width: "100%",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 30,
   },
   footerLine: {
     width: "80%",
     height: 1.5,
     backgroundColor: Color.colorRoyalblue_100,
-    marginBottom: 15,
+    marginBottom: 25,
   },
   footerLinks: {
     flexDirection: "row",
@@ -280,6 +286,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
+    marginTop: 10,
+  },
+  googleIcon: {
+    marginRight: 30,
+  },
+  facebookIcon: {
+    marginLeft: 30,
   },
 });
 
