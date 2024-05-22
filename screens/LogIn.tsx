@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
@@ -7,313 +7,129 @@ import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
 
 const LogIn = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
+  const [rememberMe, setRememberMe] = React.useState(false);
+
+  const toggleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  };
 
   return (
     <View style={styles.logIn}>
-      <View style={[styles.pageHeader, styles.logPosition]}>
-        <Text style={[styles.login, styles.showClr]}>Login</Text>
-        <Text style={[styles.logIn1, styles.logIn1Typo]}>Log In</Text>
-        <Image
-          style={[styles.iconx, styles.iconxPosition]}
-          contentFit="cover"
-          source={require("../assets/iconx.png")}
-        />
-        <Text style={[styles.right, styles.iconxPosition]}>Right</Text>
+      <View style={styles.header}>
+        <View style={styles.logoContainer}>
+          <Image
+            style={styles.logo}
+            contentFit="cover"
+            source={require("../assets/group-1.png")}
+          />
+          <Text style={styles.kpiEdu}>
+            <Text style={styles.kpi}>KPI</Text>
+            <Text style={styles.edu}> Edu</Text>
+          </Text>
+        </View>
+        <Text style={styles.logInText}>Log In</Text>
       </View>
-      <View style={[styles.inputtext, styles.inputtextPosition]}>
-        <Image
-          style={[styles.bgIcon, styles.bgIconPosition]}
-          contentFit="cover"
-          source={require("../assets/bg1.png")}
-        />
-        <Text style={styles.email}>Email</Text>
-        <Text style={[styles.show, styles.showPosition]}>Show</Text>
+      <View style={styles.inputContainer}>
+        <View style={styles.inputText}>
+          <Image
+            style={styles.bgIcon}
+            contentFit="cover"
+            source={require("../assets/bg.png")}
+          />
+          <Text style={styles.inputLabel}>Email</Text>
+        </View>
+        <View style={styles.inputText}>
+          <Image
+            style={styles.bgIcon}
+            contentFit="cover"
+            source={require("../assets/bg.png")}
+          />
+          <Text style={styles.inputLabel}>Password</Text>
+          <Text style={styles.show}>Show</Text>
+        </View>
+        <Pressable
+          style={styles.forgetPassword}
+          onPress={() => navigation.navigate("ResetPassword")}
+        >
+          <Text style={styles.forgetPasswordText}>Forget your password?</Text>
+        </Pressable>
       </View>
-      <View style={[styles.inputtext1, styles.inputtextPosition]}>
+      <TouchableOpacity style={styles.checkboxContainer} onPress={toggleRememberMe}>
         <Image
-          style={[styles.bgIcon, styles.bgIconPosition]}
+          style={styles.checkboxIcon}
           contentFit="cover"
-          source={require("../assets/bg1.png")}
+          source={rememberMe ? require("../assets/check-box-checked.png") : require("../assets/check-box.png")}
         />
-        <Text style={styles.email}>Password</Text>
-        <Text style={[styles.show1, styles.showPosition]}>Show</Text>
-      </View>
+        <Text style={styles.checkboxLabel}>Remember me</Text>
+      </TouchableOpacity>
       <Pressable
-        style={[styles.buttonprimary, styles.buttonprimaryPosition]}
+        style={styles.logInButton}
         onPress={() => navigation.navigate("Activities")}
       >
-        <Text style={styles.logIn2}>Log In</Text>
+        <Text style={styles.logInButtonText}>Log In</Text>
       </Pressable>
-      <View style={[styles.termParent, styles.logPosition]}>
-        <Text style={[styles.term, styles.termTypo]}>Term</Text>
-        <Text style={[styles.introduce, styles.termTypo]}>Introduce</Text>
-        <Text style={[styles.privacy, styles.termTypo]}>Privacy</Text>
-        <Text style={[styles.help, styles.termTypo]}>Help</Text>
-        <Text style={[styles.name2024, styles.termTypo]}>Name © 2024</Text>
-      </View>
-      <View style={[styles.logInChild, styles.logPosition]} />
-      <View style={styles.logo}>
+      <Text style={styles.orLogInWith}>Or Log In With</Text>
+      <View style={styles.socialIcons}>
         <Image
-          style={[styles.logoChild, styles.bgIconPosition]}
+          style={styles.socialIcon}
           contentFit="cover"
-          source={require("../assets/group-1.png")}
+          source={require("../assets/googleicon.png")}
         />
-        <Text style={styles.kpiEdu}>
-          <Text style={styles.kpi}>KPI</Text>
-          <Text style={styles.edu}> Edu</Text>
-        </Text>
-      </View>
-      <Text style={styles.dontHaveAn}>Don’t have an account?</Text>
-      <Pressable
-        style={[styles.buttonprimary1, styles.buttonprimaryPosition]}
-        onPress={() => navigation.navigate("SignUp")}
-      >
-        <Text style={styles.logIn2}>Sign Up</Text>
-      </Pressable>
-      <Text style={[styles.orLogIn, styles.termTypo]}>Or Log In With</Text>
-      <Image
-        style={[styles.facebookIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/facebookicon.png")}
-      />
-      <Image
-        style={[styles.googleIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/googleicon.png")}
-      />
-      <View style={styles.checkBox}>
         <Image
-          style={styles.checkBoxIcon}
+          style={styles.socialIcon}
           contentFit="cover"
-          source={require("../assets/check-box.png")}
+          source={require("../assets/facebookicon.png")}
         />
-        <Text style={[styles.iWantTo, styles.iWantToTypo]}>Remember me</Text>
       </View>
-      <Pressable
-        style={styles.forgetYourPasswordContainer}
-        onPress={() => navigation.navigate("ResetPassword")}
-      >
-        <Text style={[styles.forgetYourPassword, styles.iWantToTypo]}>
-          Forget your password
-        </Text>
-      </Pressable>
+      <View style={styles.dontHaveAnAccountContainer}>
+        <Text style={styles.dontHaveAnAccount}>Don’t have an account?</Text>
+        <Pressable
+          style={styles.signUpButton}
+          onPress={() => navigation.navigate("SignUp")}
+        >
+          <Text style={styles.signUpButtonText}>Sign Up</Text>
+        </Pressable>
+      </View>
+      <View style={styles.footer}>
+        <View style={styles.footerLine} />
+        <View style={styles.footerLinks}>
+          <Text style={styles.footerText}>Introduce</Text>
+          <Text style={styles.footerText}>Term</Text>
+          <Text style={styles.footerText}>Privacy</Text>
+          <Text style={styles.footerText}>Help</Text>
+        </View>
+        <Text style={styles.footerCopyright}>Name © 2024</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  logPosition: {
-    left: "50%",
-    position: "absolute",
+  logIn: {
+    flex: 1,
+    backgroundColor: Color.white,
+    paddingHorizontal: 16,
+    justifyContent: "space-between",
   },
-  showClr: {
-    display: "none",
-    color: Color.greenPrimary,
-  },
-  logIn1Typo: {
-    color: Color.black,
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-  },
-  iconxPosition: {
-    left: 0,
-    display: "none",
-    position: "absolute",
-  },
-  inputtextPosition: {
-    height: 50,
-    left: 18,
-    right: 16,
-    position: "absolute",
-  },
-  bgIconPosition: {
-    maxHeight: "100%",
-    maxWidth: "100%",
-    left: "0%",
-    bottom: "0%",
-    top: "0%",
-    height: "100%",
-    position: "absolute",
-    overflow: "hidden",
-  },
-  showPosition: {
-    marginTop: -9,
-    right: 16,
-    top: "50%",
-    textAlign: "right",
-    fontFamily: FontFamily.uI16Medium,
-    fontWeight: "500",
-    fontSize: FontSize.uI16Semi_size,
-    position: "absolute",
-  },
-  buttonprimaryPosition: {
-    paddingVertical: Padding.p_base,
-    paddingHorizontal: Padding.p_13xl,
+  header: {
     alignItems: "center",
-    backgroundColor: Color.colorRoyalblue_100,
-    borderRadius: Border.br_81xl,
-    left: 16,
-    right: 16,
-    position: "absolute",
+    marginTop: 50,
   },
-  termTypo: {
-    fontSize: FontSize.bodyTextRegular_size,
-    textAlign: "center",
-    left: "50%",
-    position: "absolute",
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
   },
-  iconLayout: {
-    height: 48,
-    width: 48,
-    top: 512,
-    position: "absolute",
-    overflow: "hidden",
+  logo: {
+    width: 44,
+    height: 51,
   },
-  iWantToTypo: {
-    fontFamily: FontFamily.poppinsRegular,
-    fontSize: FontSize.uI16Semi_size,
-  },
-  login: {
-    top: 8,
-    right: 0,
-    textAlign: "right",
-    fontFamily: FontFamily.uI16Medium,
-    fontSize: FontSize.uI16Semi_size,
-    display: "none",
-    fontWeight: "500",
-    position: "absolute",
-  },
-  logIn1: {
-    marginLeft: -42.5,
-    top: 0,
-    fontSize: FontSize.uI30Semi_size,
-    textAlign: "center",
-    left: "50%",
-    position: "absolute",
-  },
-  iconx: {
-    top: 5,
-    width: 23,
-    height: 23,
-  },
-  right: {
-    marginTop: -10,
+  kpiEdu: {
+    fontSize: FontSize.size_13xl,
+    fontWeight: "700",
+    fontFamily: FontFamily.ubuntuBold,
     textAlign: "left",
-    top: "50%",
-    color: Color.greenPrimary,
-    left: 0,
-    fontFamily: FontFamily.uI16Medium,
-    fontWeight: "500",
-    fontSize: FontSize.uI16Semi_size,
-  },
-  pageHeader: {
-    marginLeft: -170.5,
-    top: 102,
-    width: 343,
-    height: 36,
-  },
-  bgIcon: {
-    right: "0%",
-    borderRadius: Border.br_5xs,
-    width: "100%",
-  },
-  email: {
-    color: Color.gray03,
-    left: 16,
-    marginTop: -9,
-    textAlign: "left",
-    top: "50%",
-    fontFamily: FontFamily.uI16Medium,
-    fontWeight: "500",
-    fontSize: FontSize.uI16Semi_size,
-    position: "absolute",
-  },
-  show: {
-    display: "none",
-    color: Color.greenPrimary,
-  },
-  inputtext: {
-    top: 191,
-  },
-  show1: {
-    color: Color.colorDimgray_100,
-  },
-  inputtext1: {
-    top: 261,
-  },
-  logIn2: {
-    color: Color.white,
-    textAlign: "center",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    fontSize: FontSize.uI16Semi_size,
-  },
-  buttonprimary: {
-    bottom: 348,
-  },
-  term: {
-    marginLeft: -33.5,
-    color: Color.greenPrimary1,
-    marginTop: -23.5,
-    fontSize: FontSize.bodyTextRegular_size,
-    top: "50%",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-  },
-  introduce: {
-    marginLeft: -111.5,
-    marginTop: -23.5,
-    fontSize: FontSize.bodyTextRegular_size,
-    top: "50%",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    color: Color.colorDimgray_100,
-  },
-  privacy: {
-    marginLeft: 18.5,
-    marginTop: -23.5,
-    fontSize: FontSize.bodyTextRegular_size,
-    top: "50%",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    color: Color.colorDimgray_100,
-  },
-  help: {
-    marginLeft: 84.5,
-    marginTop: -23.5,
-    fontSize: FontSize.bodyTextRegular_size,
-    top: "50%",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    color: Color.colorDimgray_100,
-  },
-  name2024: {
-    marginTop: 8.5,
-    marginLeft: -43.5,
-    top: "50%",
-    color: Color.black,
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-  },
-  termParent: {
-    marginTop: 324,
-    marginLeft: -110.5,
-    width: 223,
-    height: 47,
-    top: "50%",
-  },
-  logInChild: {
-    marginLeft: -158,
-    top: 701,
-    borderStyle: "solid",
-    borderColor: Color.colorRoyalblue_100,
-    borderTopWidth: 1,
-    width: 317,
-    height: 1,
-  },
-  logoChild: {
-    width: "23.95%",
-    right: "76.05%",
+    marginLeft: 16,
   },
   kpi: {
     color: Color.colorOrange,
@@ -321,93 +137,167 @@ const styles = StyleSheet.create({
   edu: {
     color: Color.colorDodgerblue_100,
   },
-  kpiEdu: {
-    top: 7,
-    left: 60,
-    fontSize: FontSize.size_13xl,
-    fontWeight: "700",
-    fontFamily: FontFamily.ubuntuBold,
-    width: 123,
-    height: 38,
-    textAlign: "left",
-    position: "absolute",
-  },
-  logo: {
-    height: "6.29%",
-    width: "48.77%",
-    top: "4.56%",
-    right: "25.63%",
-    bottom: "89.15%",
-    left: "25.6%",
-    position: "absolute",
-  },
-  dontHaveAn: {
-    top: 582,
-    left: 37,
-    fontSize: FontSize.h1_size,
-    fontFamily: FontFamily.poppinsMedium,
-    width: 307,
-    height: 24,
-    color: Color.colorDarkslategray_100,
+  logInText: {
+    fontSize: FontSize.uI30Semi_size,
+    color: Color.black,
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
     textAlign: "center",
-    fontWeight: "500",
-    position: "absolute",
+    marginBottom: 15,
   },
-  buttonprimary1: {
-    bottom: 144,
+  inputContainer: {
+    marginBottom: 0,
   },
-  orLogIn: {
-    marginLeft: -36.5,
-    top: 475,
-    lineHeight: 16,
-    fontFamily: FontFamily.manropeRegular,
-    color: Color.colorGray_300,
+  inputText: {
+    marginBottom: 20,
+    position: "relative",
   },
-  facebookIcon: {
-    left: 227,
-  },
-  googleIcon: {
-    left: 109,
-  },
-  checkBoxIcon: {
-    width: 24,
-    height: 24,
-    overflow: "hidden",
-  },
-  iWantTo: {
-    marginLeft: 8,
-    color: Color.colorDarkslategray_100,
-    textAlign: "left",
-  },
-  checkBox: {
-    top: 361,
-    left: 23,
-    width: 152,
-    height: 29,
-    flexDirection: "row",
-    paddingTop: Padding.p_5xs,
-    paddingRight: Padding.p_5xs,
-    paddingBottom: Padding.p_5xs,
-    position: "absolute",
-  },
-  forgetYourPassword: {
-    textDecoration: "underline",
-    color: Color.colorGray_400,
-    width: 184,
-    height: 15,
-    textAlign: "right",
-  },
-  forgetYourPasswordContainer: {
-    left: 175,
-    top: 324,
-    position: "absolute",
-  },
-  logIn: {
-    backgroundColor: Color.white,
-    flex: 1,
-    height: 812,
-    overflow: "hidden",
+  bgIcon: {
     width: "100%",
+    height: 50,
+    borderRadius: Border.br_5xs,
+  },
+  inputLabel: {
+    position: "absolute",
+    left: 16,
+    top: "50%",
+    marginTop: -9,
+    color: Color.gray03,
+    fontFamily: FontFamily.uI16Medium,
+    fontWeight: "500",
+    fontSize: FontSize.uI16Semi_size,
+  },
+  show: {
+    position: "absolute",
+    right: 16,
+    top: "50%",
+    marginTop: -9,
+    color: Color.greenPrimary,
+    fontFamily: FontFamily.uI16Medium,
+    fontWeight: "500",
+    fontSize: FontSize.uI16Semi_size,
+  },
+  forgetPassword: {
+    alignSelf: "flex-end",
+    marginBottom: -30,
+    marginTop: -10,
+  },
+  forgetPasswordText: {
+    textDecorationLine: "underline",
+    color: Color.colorGray_400,
+    fontSize: FontSize.uI16Semi_size, // Tăng kích thước phông chữ
+    fontFamily: FontFamily.uI16Semi, // Thay đổi phông chữ
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: -15,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  checkboxIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+  checkboxLabel: {
+    color: Color.colorGray_400,
+    fontSize: FontSize.uI16Semi_size, // Tăng kích thước phông chữ
+    fontFamily: FontFamily.uI16Semi, // Thay đổi phông chữ
+  },
+  logInButton: {
+    backgroundColor: Color.colorRoyalblue_100,
+    borderRadius: Border.br_81xl,
+    paddingVertical: Padding.p_base,
+    alignItems: "center",
+    marginBottom: -20,
+    marginTop: 0,
+  },
+  logInButtonText: {
+    color: Color.white,
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  orLogInWith: {
+    textAlign: "center",
+    fontSize: FontSize.bodyTextRegular_size,
+    fontFamily: FontFamily.uI14Regular,
+    color: Color.colorGray_300,
+    marginBottom: -20,
+    marginTop: 0,
+  },
+  socialIcons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  socialIcon: {
+    width: 48,
+    height: 48,
+    marginHorizontal: 30,
+  },
+  dontHaveAnAccountContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+    marginTop: -30,
+  },
+  dontHaveAnAccount: {
+    fontSize: FontSize.size_xl,
+    color: Color.black,
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    textAlign: "center",
+    marginBottom: 15,
+  },
+  signUpButton: {
+    backgroundColor: Color.colorRoyalblue_100,
+    borderRadius: Border.br_81xl,
+    paddingVertical: Padding.p_base,
+    alignItems: "center",
+    width: "100%", // Điều chỉnh kích thước theo nhu cầu
+  },
+  signUpButtonText: {
+    color: Color.white,
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  signUp: {
+    textDecorationLine: "underline",
+    color: Color.colorGray_400,
+  },
+  footer: {
+    width: "100%",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  footerLine: {
+    width: "80%",
+    height: 1.5,
+    backgroundColor: Color.colorRoyalblue_100,
+    marginBottom: 25,
+  },
+  footerLinks: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "80%",
+    marginBottom: 10,
+  },
+  footerText: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  footerCopyright: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    marginTop: 10,
   },
 });
 

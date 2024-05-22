@@ -1,7 +1,7 @@
-const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import SignUp from "./screens/SignUp";
 import LogIn from "./screens/LogIn";
@@ -25,8 +25,7 @@ import KPICompletionProgress1 from "./screens/KPICompletionProgress1";
 import Notification1 from "./screens/Notification1";
 import KPICompletionProgress2 from "./screens/KPICompletionProgress2";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -59,124 +58,35 @@ const App = () => {
   }
 
   return (
-    <>
-      <NavigationContainer>
-        {hideSplashScreen ? (
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="Home"
-              component={Home}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SignUp"
-              component={SignUp}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="LogIn"
-              component={LogIn}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ResetPassword"
-              component={ResetPassword}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ResetPasswordStep"
-              component={ResetPasswordStep}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ResetPasswordStep1"
-              component={ResetPasswordStep1}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Calendar"
-              component={Calendar}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ProfileList"
-              component={ProfileList}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ProfilePhotos"
-              component={ProfilePhotos}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ProfilePhotos1"
-              component={ProfilePhotos1}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="EditProfile"
-              component={EditProfile}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="EditProfile1"
-              component={EditProfile1}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="KPICompletionProgress"
-              component={KPICompletionProgress}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Messages"
-              component={Messages}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="DetailTask"
-              component={DetailTask}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="MassageWith"
-              component={MassageWith}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Activities"
-              component={Activities}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ActivityDelete"
-              component={ActivityDelete}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="DoneTasks"
-              component={DoneTasks}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="KPICompletionProgress1"
-              component={KPICompletionProgress1}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Notification1"
-              component={Notification1}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="KPICompletionProgress2"
-              component={KPICompletionProgress2}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        ) : null}
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      {hideSplashScreen ? (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+          <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
+          <Stack.Screen name="ResetPasswordStep" component={ResetPasswordStep} options={{ headerShown: false }} />
+          <Stack.Screen name="ResetPasswordStep1" component={ResetPasswordStep1} options={{ headerShown: false }} />
+          <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }} />
+          <Stack.Screen name="ProfileList" component={ProfileList} options={{ headerShown: false }} />
+          <Stack.Screen name="ProfilePhotos" component={ProfilePhotos} options={{ headerShown: false }} />
+          <Stack.Screen name="ProfilePhotos1" component={ProfilePhotos1} options={{ headerShown: false }} />
+          <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: false }} />
+          <Stack.Screen name="EditProfile1" component={EditProfile1} options={{ headerShown: false }} />
+          <Stack.Screen name="KPICompletionProgress" component={KPICompletionProgress} options={{ headerShown: false }} />
+          <Stack.Screen name="Messages" component={Messages} options={{ headerShown: false }} />
+          <Stack.Screen name="DetailTask" component={DetailTask} options={{ headerShown: false }} />
+          <Stack.Screen name="MassageWith" component={MassageWith} options={{ headerShown: false }} />
+          <Stack.Screen name="Activities" component={Activities} options={{ headerShown: false }} />
+          <Stack.Screen name="ActivityDelete" component={ActivityDelete} options={{ headerShown: false }} />
+          <Stack.Screen name="DoneTasks" component={DoneTasks} options={{ headerShown: false }} />
+          <Stack.Screen name="KPICompletionProgress1" component={KPICompletionProgress1} options={{ headerShown: false }} />
+          <Stack.Screen name="Notification1" component={Notification1} options={{ headerShown: false }} />
+          <Stack.Screen name="KPICompletionProgress2" component={KPICompletionProgress2} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      ) : null}
+    </NavigationContainer>
   );
 };
+
 export default App;

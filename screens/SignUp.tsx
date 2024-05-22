@@ -74,9 +74,11 @@ const SignUp = () => {
           information.
         </Text>
       </View>
-      <Text style={styles.alreadyHaveAnAccount}>
-        Already have an account? <Text style={styles.logIn}>Log in</Text>
-      </Text>
+      <Pressable onPress={() => navigation.navigate("LogIn")}>
+        <Text style={styles.alreadyHaveAnAccount}>
+          Already have an account? <Text style={styles.logIn}>Log in</Text>
+        </Text>
+      </Pressable>
       <Pressable
         style={styles.signUpButton}
         onPress={() => navigation.navigate("Activities")}
