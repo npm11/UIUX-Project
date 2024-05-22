@@ -10,186 +10,101 @@ const Home = () => {
 
   return (
     <View style={styles.home}>
-      <Pressable
-        style={[styles.buttonprimary, styles.buttonprimarySpaceBlock]}
-        onPress={() => navigation.navigate("LogIn")}
-      >
-        <Text style={styles.login}>Log In</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.buttonprimary1, styles.buttonprimarySpaceBlock]}
-        onPress={() => navigation.navigate("SignUp")}
-      >
-        <Text style={styles.login}>Sign Up</Text>
-      </Pressable>
-      <Text style={[styles.letsGetStarted, styles.orTypo]}>
-        Let’s get started by
-      </Text>
-      <Text style={[styles.or, styles.orTypo]}>or</Text>
-      <View style={styles.keyboardArrowDownParent}>
-        <Image
-          style={[styles.keyboardArrowDown, styles.groupParentPosition]}
-          contentFit="cover"
-          source={require("../assets/keyboard-arrow-down.png")}
-        />
-        <Text style={styles.languages}>Languages</Text>
+      <View style={styles.header}>
+        <View style={styles.languageSelector}>
+          <Text style={styles.languages}>Languages</Text>
+          <Image
+            style={styles.keyboardArrowDown}
+            contentFit="cover"
+            source={require("../assets/keyboard-arrow-down.png")}
+          />
+        </View>
+        <View style={styles.logoContainer}>
+          <Image
+            style={styles.logo}
+            contentFit="cover"
+            source={require("../assets/group-1.png")}
+          />
+          <Text style={styles.kpiEdu}>
+            <Text style={styles.kpi}>KPI</Text>
+            <Text style={styles.edu}> Edu</Text>
+          </Text>
+        </View>
       </View>
-      <View style={[styles.bottom, styles.bottomPosition]}>
-        <Text style={[styles.term, styles.termTypo]}>Term</Text>
-        <Text style={[styles.introduce, styles.helpTypo]}>Introduce</Text>
-        <Text style={[styles.privacy, styles.helpTypo]}>Privacy</Text>
-        <Text style={[styles.help, styles.helpTypo]}>Help</Text>
-        <Text style={[styles.name2024, styles.termTypo]}>Name © 2024</Text>
+      <View style={styles.body}>
+        <Text style={styles.letsGetStarted}>Let’s get started by</Text>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("LogIn")}
+        >
+          <Text style={styles.buttonText}>Log In</Text>
+        </Pressable>
+        <Text style={styles.or}>or</Text>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("SignUp")}
+        >
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </Pressable>
       </View>
-      <View style={[styles.homeChild, styles.bottomPosition]} />
-      <View style={[styles.groupParent, styles.groupParentPosition]}>
-        <Image
-          style={styles.frameChild}
-          contentFit="cover"
-          source={require("../assets/group-1.png")}
-        />
-        <Text style={styles.kpiEdu}>
-          <Text style={styles.kpi}>KPI</Text>
-          <Text style={styles.edu}> Edu</Text>
-        </Text>
+      <View style={styles.footer}>
+        <View style={styles.footerLine} />
+        <View style={styles.footerLinks}>
+          <Text style={styles.footerText}>Introduce</Text>
+          <Text style={styles.footerText}>Term</Text>
+          <Text style={styles.footerText}>Privacy</Text>
+          <Text style={styles.footerText}>Help</Text>
+        </View>
+        <Text style={styles.footerCopyright}>Name © 2024</Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonprimarySpaceBlock: {
-    paddingVertical: Padding.p_base,
-    paddingHorizontal: Padding.p_13xl,
-    width: 343,
-    backgroundColor: Color.colorRoyalblue_100,
-    borderRadius: Border.br_81xl,
-    marginLeft: -169.5,
+  home: {
+    flex: 1,
+    backgroundColor: Color.white,
+    justifyContent: "space-between",
     alignItems: "center",
-    left: "50%",
-    position: "absolute",
+    paddingVertical: Padding.p_base,
   },
-  orTypo: {
-    fontSize: FontSize.size_5xl,
-    color: Color.black,
-    textAlign: "center",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    left: "50%",
-    position: "absolute",
+  header: {
+    alignItems: "center",
+    marginTop: 20,
   },
-  groupParentPosition: {
-    top: "50%",
-    left: "50%",
-    position: "absolute",
-  },
-  bottomPosition: {
-    left: "50%",
-    position: "absolute",
-  },
-  termTypo: {
-    fontSize: FontSize.bodyTextRegular_size,
-    textAlign: "center",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    left: "50%",
-    position: "absolute",
-  },
-  helpTypo: {
-    top: 0,
-    fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
-    textAlign: "center",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    position: "absolute",
-  },
-  login: {
-    fontSize: FontSize.uI16Semi_size,
-    color: Color.white,
-    textAlign: "center",
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-  },
-  buttonprimary: {
-    bottom: 433,
-  },
-  buttonprimary1: {
-    bottom: 327,
-  },
-  letsGetStarted: {
-    marginLeft: -110.5,
-    top: 279,
-    color: Color.black,
-  },
-  or: {
-    marginLeft: -12.5,
-    top: 392,
-    color: Color.black,
-  },
-  keyboardArrowDown: {
-    marginTop: -8,
-    marginLeft: 20,
-    width: 16,
-    height: 16,
-    overflow: "hidden",
+  languageSelector: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
   },
   languages: {
-    marginTop: -6,
-    marginLeft: -36,
-    fontSize: FontSize.size_3xs,
+    fontSize: 12, // Set the desired font size in pixels
     color: Color.colorDimgray_100,
-    top: "50%",
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    left: "50%",
-    position: "absolute",
+    fontWeight: "700", // Make the text bold
+    marginRight: 0,
+    marginLeft: 15,
   },
-  keyboardArrowDownParent: {
-    top: 14,
-    left: 157,
-    width: 72,
+  keyboardArrowDown: {
+    width: 16,
     height: 16,
-    position: "absolute",
   },
-  term: {
-    marginLeft: -33.5,
-    bottom: 32,
-    color: Color.greenPrimary1,
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  introduce: {
-    left: 0,
-  },
-  privacy: {
-    left: 130,
-  },
-  help: {
-    left: 196,
-  },
-  name2024: {
-    marginLeft: -43.5,
-    top: 32,
-    color: Color.black,
-  },
-  bottom: {
-    marginLeft: -111.5,
-    bottom: 35,
-    width: 223,
-    height: 47,
-  },
-  homeChild: {
-    marginLeft: -158,
-    top: 701,
-    borderStyle: "solid",
-    borderColor: Color.colorRoyalblue_100,
-    borderTopWidth: 1,
-    width: 317,
-    height: 1,
-  },
-  frameChild: {
+  logo: {
     width: 44,
     height: 51,
+  },
+  kpiEdu: {
+    fontSize: FontSize.size_13xl,
+    fontWeight: "700",
+    fontFamily: FontFamily.ubuntuBold,
+    textAlign: "left",
+    marginLeft: 16,
   },
   kpi: {
     color: Color.colorOrange,
@@ -197,29 +112,71 @@ const styles = StyleSheet.create({
   edu: {
     color: Color.colorDodgerblue_100,
   },
-  kpiEdu: {
-    fontSize: FontSize.size_13xl,
-    fontWeight: "700",
-    fontFamily: FontFamily.ubuntuBold,
-    textAlign: "left",
-    width: 123,
-    height: 38,
-    marginLeft: 16,
-  },
-  groupParent: {
-    marginTop: -369,
-    marginLeft: -91.5,
-    flexDirection: "row",
-    justifyContent: "center",
+  body: {
     alignItems: "center",
-    top: "50%",
   },
-  home: {
-    backgroundColor: Color.white,
-    flex: 1,
+  letsGetStarted: {
+    fontSize: FontSize.size_5xl,
+    color: Color.black,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    marginBottom: 12,
+  },
+  or: {
+    fontSize: FontSize.size_5xl,
+    color: Color.black,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    marginVertical: 5,
+  },
+  button: {
+    width: 343,
+    paddingVertical: Padding.p_base,
+    backgroundColor: Color.colorRoyalblue_100,
+    borderRadius: Border.br_81xl,
+    alignItems: "center",
+    marginVertical: 5,
+  },
+  buttonText: {
+    fontSize: FontSize.uI16Semi_size,
+    color: Color.white,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  footer: {
     width: "100%",
-    height: 812,
-    overflow: "hidden",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  footerLine: {
+    width: "80%",
+    height: 1.5,
+    backgroundColor: Color.colorRoyalblue_100,
+    marginBottom: 25,
+  },
+  footerLinks: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "80%",
+    marginBottom: 10,
+  },
+  footerText: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  footerCopyright: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    marginTop: 10,
   },
 });
 
