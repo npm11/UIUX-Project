@@ -1,221 +1,127 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
-import { Image } from "expo-image";
+import { Text, StyleSheet, View, Pressable, TextInput, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
-import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
 const ResetPassword = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
 
   return (
     <View style={styles.resetPassword}>
-      <View style={[styles.bottom, styles.bottomPosition]}>
-        <Text style={[styles.term, styles.termFlexBox]}>Term</Text>
-        <Text style={[styles.introduce, styles.helpTypo]}>Introduce</Text>
-        <Text style={[styles.privacy, styles.helpTypo]}>Privacy</Text>
-        <Text style={[styles.help, styles.helpTypo]}>Help</Text>
-        <Text style={[styles.name2024, styles.termFlexBox]}>Name © 2024</Text>
-      </View>
-      <View style={[styles.textFieldParent, styles.textLayout]}>
-        <View style={[styles.textField, styles.textLayout]} />
-        <View style={styles.labelWrapper}>
-          <Text style={styles.label}>Email address</Text>
-        </View>
-      </View>
-      <View style={[styles.frameParent, styles.framePosition]}>
+      <Pressable
+        style={styles.backButtonWrapper}
+        onPress={() => navigation.navigate("LogIn")}
+      >
         <Image
-          style={[styles.frameChild, styles.framePosition]}
-          contentFit="cover"
-          source={require("../assets/group-1.png")}
+          style={styles.backButtonIcon}
+          source={require("../assets/back-arrow.png")}
         />
-        <View style={[styles.kpiEduWrapper, styles.kpiPosition]}>
-          <Text style={[styles.kpiEdu, styles.kpiPosition]}>
+      </Pressable>
+      <View style={styles.header}>
+        <View style={styles.languageSelector}>
+          <Text style={styles.languages}>Languages</Text>
+          <Image
+            style={styles.keyboardArrowDown}
+            source={require("../assets/keyboard-arrow-down.png")}
+          />
+        </View>
+        <View style={styles.logoContainer}>
+          <Image
+            style={styles.logo}
+            source={require("../assets/group-1.png")}
+          />
+          <Text style={styles.kpiEdu}>
             <Text style={styles.kpi}>KPI</Text>
             <Text style={styles.edu}> Edu</Text>
           </Text>
         </View>
       </View>
+      <View style={styles.messageWrapper}>
+        <Text style={styles.messageText}>
+          Enter your user account's verified email address and we will send you
+          a password reset link.
+        </Text>
+      </View>
+      <View style={styles.inputWrapper}>
+        <Text style={styles.inputLabel}>Email address</Text>
+        <TextInput style={styles.inputField} placeholder="Enter your email" />
+      </View>
       <Pressable
-        style={[styles.backToLoginWrapper, styles.bottomPosition]}
-        onPress={() => navigation.navigate("LogIn")}
+        style={styles.resetButton}
+        onPress={() => {
+          /* Handle password reset */
+        }}
       >
-        <Text style={[styles.backToLogin, styles.backToLoginTypo]}>
-          Back to Login
-        </Text>
+        <Text style={styles.resetButtonText}>Send password reset email</Text>
       </Pressable>
-      <View style={styles.frameGroup}>
-        <Image
-          style={styles.frameItemPosition}
-          contentFit="cover"
-          source={require("../assets/frame-496071.png")}
-        />
-        <View style={[styles.messagereceive, styles.frameItemPosition]}>
-          <Text style={[styles.loremIpsumDolor, styles.buttonPosition]}>
-            Enter your user account's verified email address and we will send
-            you a password reset link.
-          </Text>
+      <View style={styles.footer}>
+        <View style={styles.footerLine} />
+        <View style={styles.footerLinks}>
+          <Text style={styles.footerText}>Introduce</Text>
+          <Text style={styles.footerText}>Term</Text>
+          <Text style={styles.footerText}>Privacy</Text>
+          <Text style={styles.footerText}>Help</Text>
         </View>
+        <Text style={styles.footerCopyright}>Name © 2024</Text>
       </View>
-      <Image
-        style={[styles.resetPasswordChild, styles.textFieldParentPosition]}
-        contentFit="cover"
-        source={require("../assets/frame-496063.png")}
-      />
-      <View style={[styles.button, styles.buttonPosition]}>
-        <Text style={[styles.sendPasswordReset, styles.backToLoginTypo]}>
-          Send password reset email
-        </Text>
-      </View>
-      <Image
-        style={[styles.resetPasswordItem, styles.bottomPosition]}
-        contentFit="cover"
-        source={require("../assets/frame-496076.png")}
-      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  bottomPosition: {
-    left: "50%",
-    top: "50%",
+  resetPassword: {
+    flex: 1,
+    backgroundColor: Color.white,
+    paddingHorizontal: 16,
+    justifyContent: "space-between",
+  },
+  backButtonWrapper: {
     position: "absolute",
+    top: 40,
+    left: 20,
+    zIndex: 1,
   },
-  termFlexBox: {
-    textAlign: "center",
-    left: "50%",
+  backButtonIcon: {
+    width: 26,
+    height: 26,
   },
-  helpTypo: {
+  header: {
+    alignItems: "center",
+    marginTop: 45,
+  },
+  languageSelector: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  languages: {
+    fontSize: 12,
     color: Color.colorDimgray_100,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    fontSize: FontSize.bodyTextRegular_size,
-    marginTop: -23.5,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
+    fontWeight: "700",
+    marginRight: 0,
+    marginLeft: 15,
   },
-  textLayout: {
-    width: 309,
-    position: "absolute",
-    overflow: "hidden",
+  keyboardArrowDown: {
+    width: 16,
+    height: 16,
   },
-  framePosition: {
-    height: 51,
-    marginLeft: -91.5,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  kpiPosition: {
-    height: 38,
-    width: 123,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-  },
-  backToLoginTypo: {
-    fontWeight: "500",
-    fontSize: FontSize.uI16Semi_size,
-    top: "50%",
-    position: "absolute",
-  },
-  frameItemPosition: {
-    marginLeft: -136.5,
-    marginTop: -65.5,
-    height: 131,
-    width: 273,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-  },
-  buttonPosition: {
-    width: 241,
-    marginLeft: -120.5,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-  },
-  textFieldParentPosition: {
-    marginLeft: -156.5,
-    left: "50%",
-    top: "50%",
-  },
-  term: {
-    marginLeft: -33.5,
-    color: Color.greenPrimary1,
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    fontSize: FontSize.bodyTextRegular_size,
-    textAlign: "center",
-    top: "50%",
-    position: "absolute",
-    marginTop: -23.5,
-  },
-  introduce: {
-    marginLeft: -111.5,
-  },
-  privacy: {
-    marginLeft: 18.5,
-  },
-  help: {
-    marginLeft: 84.5,
-  },
-  name2024: {
-    marginTop: 8.5,
-    marginLeft: -43.5,
-    color: Color.black,
-    fontFamily: FontFamily.uI14Semi,
-    fontWeight: "600",
-    fontSize: FontSize.bodyTextRegular_size,
-    textAlign: "center",
-    top: "50%",
-    position: "absolute",
-  },
-  bottom: {
-    marginTop: 324,
-    marginLeft: -110.5,
-    width: 223,
-    height: 47,
-    overflow: "hidden",
-  },
-  textField: {
-    top: 34,
-    borderRadius: Border.br_xs,
-    borderStyle: "solid",
-    borderColor: Color.colorDimgray_400,
-    borderWidth: 1,
-    height: 55,
-    left: 0,
-  },
-  label: {
-    fontFamily: FontFamily.poppinsRegular,
-    color: Color.gray04,
-    textAlign: "left",
-    fontSize: FontSize.uI16Semi_size,
-    top: 0,
-    left: 0,
-    position: "absolute",
-  },
-  labelWrapper: {
-    width: 113,
-    height: 27,
-    top: 0,
-    left: 0,
-    position: "absolute",
-  },
-  textFieldParent: {
-    marginTop: 3,
-    height: 89,
-    marginLeft: -156.5,
-    left: "50%",
-    top: "50%",
-  },
-  frameChild: {
-    marginTop: -25.55,
+  logo: {
     width: 44,
+    height: 51,
+  },
+  kpiEdu: {
+    fontSize: FontSize.size_13xl,
+    fontWeight: "700",
+    fontFamily: FontFamily.ubuntuBold,
+    textAlign: "left",
+    marginLeft: 16,
   },
   kpi: {
     color: Color.colorOrange,
@@ -223,96 +129,83 @@ const styles = StyleSheet.create({
   edu: {
     color: Color.colorDodgerblue_100,
   },
-  kpiEdu: {
-    marginTop: -19,
-    marginLeft: -61.5,
-    fontSize: FontSize.size_13xl,
-    fontWeight: "700",
-    fontFamily: FontFamily.ubuntuBold,
-    textAlign: "left",
-  },
-  kpiEduWrapper: {
-    marginTop: -18.55,
-    marginLeft: -31.5,
-  },
-  frameParent: {
-    marginTop: -332,
-    width: 183,
-  },
-  backToLogin: {
-    marginTop: -9.5,
-    fontFamily: FontFamily.uI16Medium,
-    color: Color.colorRoyalblue_100,
-    textAlign: "left",
-    left: 0,
-  },
-  backToLoginWrapper: {
-    marginTop: -388,
-    marginLeft: -173.5,
-    width: 104,
-    height: 19,
-    overflow: "hidden",
-  },
-  loremIpsumDolor: {
-    marginTop: -50.5,
-    fontSize: FontSize.uI14Regular_size,
-    fontFamily: FontFamily.uI14Regular,
-    height: 72,
-    textAlign: "left",
-    color: Color.black,
-  },
-  messagereceive: {
-    borderRadius: Border.br_3xs,
-  },
-  frameGroup: {
-    marginTop: -201,
-    marginLeft: -127.5,
-    height: 131,
-    width: 273,
-    left: "50%",
-    top: "50%",
-    position: "absolute",
-    overflow: "hidden",
-  },
-  resetPasswordChild: {
-    marginTop: -55,
-    width: 122,
-    height: 39,
-    position: "absolute",
-    marginLeft: -156.5,
-    overflow: "hidden",
-  },
-  sendPasswordReset: {
-    marginTop: -12,
-    marginLeft: -109.5,
-    fontFamily: FontFamily.poppinsMedium,
-    color: Color.white,
-    display: "flex",
+  messageWrapper: {
     alignItems: "center",
-    justifyContent: "center",
-    width: 219,
+    marginVertical: -20,
+    backgroundColor: "#f1f1f1",
+    padding: 15,
+    borderRadius: 10,
+    marginHorizontal: 16,
+  },
+  messageText: {
+    fontSize: FontSize.uI16Semi_size,
+    color: Color.colorDarkslategray_100,
+    fontFamily: FontFamily.uI14Regular,
     textAlign: "center",
-    left: "50%",
   },
-  button: {
-    marginTop: 119,
-    borderRadius: Border.br_13xl,
+  inputWrapper: {
+    marginHorizontal: 16,
+    marginBottom: 20,
+  },
+  inputLabel: {
+    fontSize: FontSize.uI16Semi_size,
+    color: Color.gray04,
+    fontFamily: FontFamily.uI16Medium,
+    marginBottom: 10,
+  },
+  inputField: {
+    borderWidth: 1,
+    borderColor: Color.colorDimgray_400,
+    borderRadius: Border.br_xs,
+    padding: 10,
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI14Regular,
+  },
+  resetButton: {
     backgroundColor: Color.colorRoyalblue_100,
-    height: 42,
-    overflow: "hidden",
+    borderRadius: Border.br_81xl,
+    paddingVertical: 15,
+    alignItems: "center",
+    marginHorizontal: 16,
+    marginBottom: 30,
   },
-  resetPasswordItem: {
-    marginTop: 295,
-    marginLeft: -157.5,
-    maxHeight: "100%",
-    width: 316,
+  resetButtonText: {
+    color: Color.white,
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
   },
-  resetPassword: {
-    backgroundColor: Color.white,
-    flex: 1,
+  footer: {
     width: "100%",
-    height: 812,
-    overflow: "hidden",
+    alignItems: "center",
+    marginBottom: 50,
+  },
+  footerLine: {
+    width: "80%",
+    height: 1.5,
+    backgroundColor: Color.colorRoyalblue_100,
+    marginBottom: 25,
+  },
+  footerLinks: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "80%",
+    marginBottom: 10,
+  },
+  footerText: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+  },
+  footerCopyright: {
+    fontSize: FontSize.bodyTextRegular_size,
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "600",
+    marginTop: 10,
   },
 });
 

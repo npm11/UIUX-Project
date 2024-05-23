@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable, Modal, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
@@ -7,18 +7,29 @@ import { Padding, Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 
 const Home = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
+  const [languageModalVisible, setLanguageModalVisible] = React.useState(false);
+  const [selectedLanguage, setSelectedLanguage] = React.useState("Languages");
+
+  const toggleLanguageModal = () => {
+    setLanguageModalVisible(!languageModalVisible);
+  };
+
+  const selectLanguage = (language: string) => {
+    setSelectedLanguage(language);
+    setLanguageModalVisible(false);
+  };
 
   return (
     <View style={styles.home}>
       <View style={styles.header}>
-        <View style={styles.languageSelector}>
-          <Text style={styles.languages}>Languages</Text>
+        <Pressable style={styles.languageSelector} onPress={toggleLanguageModal}>
+          <Text style={styles.languages}>{selectedLanguage}</Text>
           <Image
             style={styles.keyboardArrowDown}
             contentFit="cover"
             source={require("../assets/keyboard-arrow-down.png")}
           />
-        </View>
+        </Pressable>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -31,6 +42,34 @@ const Home = () => {
           </Text>
         </View>
       </View>
+      <Modal
+        transparent={true}
+        visible={languageModalVisible}
+        onRequestClose={toggleLanguageModal}
+      >
+        <TouchableOpacity style={styles.modalOverlay} onPress={toggleLanguageModal}>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              style={styles.modalOption}
+              onPress={() => selectLanguage("Vietnamese")}
+            >
+              <Text style={styles.modalOptionText}>Vietnamese</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.modalOption}
+              onPress={() => selectLanguage("English")}
+            >
+              <Text style={styles.modalOptionText}>English</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.modalOption}
+              onPress={() => selectLanguage("Japanese")}
+            >
+              <Text style={styles.modalOptionText}>Japanese</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
       <View style={styles.body}>
         <Text style={styles.letsGetStarted}>Let’s get started by</Text>
         <Pressable
@@ -177,6 +216,27 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
     marginTop: 10,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContainer: {
+    width: 200,
+    backgroundColor: "white",
+    borderRadius: 10,
+    padding: 10,
+  },
+  modalOption: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  modalOptionText: {
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI14Semi,
+    textAlign: "center",
   },
 });
 

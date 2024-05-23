@@ -16,6 +16,14 @@ const LogIn = () => {
   return (
     <View style={styles.logIn}>
       <View style={styles.header}>
+        <View style={styles.languageSelector}>
+          <Text style={styles.languages}>Languages</Text>
+          <Image
+            style={styles.keyboardArrowDown}
+            contentFit="cover"
+            source={require("../assets/keyboard-arrow-down.png")}
+          />
+        </View>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -55,12 +63,6 @@ const LogIn = () => {
         </Pressable>
       </View>
       <TouchableOpacity style={styles.checkboxContainer} onPress={toggleRememberMe}>
-        <Image
-          style={styles.checkboxIcon}
-          contentFit="cover"
-          source={rememberMe ? require("../assets/check-box-checked.png") : require("../assets/check-box.png")}
-        />
-        <Text style={styles.checkboxLabel}>Remember me</Text>
       </TouchableOpacity>
       <Pressable
         style={styles.logInButton}
@@ -105,6 +107,31 @@ const LogIn = () => {
 };
 
 const styles = StyleSheet.create({
+  home: {
+    flex: 1,
+    backgroundColor: Color.white,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: Padding.p_base,
+  },
+  languageSelector: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  languages: {
+    fontSize: 12, // Set the desired font size in pixels
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "700", // Make the text bold
+    marginRight: 0,
+    marginLeft: 15,
+  },
+  keyboardArrowDown: {
+    width: 16,
+    height: 16,
+  },
   logIn: {
     flex: 1,
     backgroundColor: Color.white,
@@ -113,7 +140,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 30,
   },
   logoContainer: {
     flexDirection: "row",
@@ -143,7 +170,8 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
     textAlign: "center",
-    marginBottom: 15,
+    marginBottom: 5,
+    marginTop: 5,
   },
   inputContainer: {
     marginBottom: 0,
@@ -179,14 +207,14 @@ const styles = StyleSheet.create({
   },
   forgetPassword: {
     alignSelf: "flex-end",
-    marginBottom: -30,
+    marginBottom: -20,
     marginTop: -10,
   },
   forgetPasswordText: {
     textDecorationLine: "underline",
     color: Color.colorGray_400,
-    fontSize: FontSize.uI16Semi_size, // Tăng kích thước phông chữ
-    fontFamily: FontFamily.uI16Semi, // Thay đổi phông chữ
+    fontSize: FontSize.uI14Regular_size, // Tăng kích thước phông chữ
+    fontFamily: FontFamily.uI16Medium, // Thay đổi phông chữ
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -200,18 +228,14 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 10,
   },
-  checkboxLabel: {
-    color: Color.colorGray_400,
-    fontSize: FontSize.uI16Semi_size, // Tăng kích thước phông chữ
-    fontFamily: FontFamily.uI16Semi, // Thay đổi phông chữ
-  },
+
   logInButton: {
     backgroundColor: Color.colorRoyalblue_100,
     borderRadius: Border.br_81xl,
     paddingVertical: Padding.p_base,
     alignItems: "center",
-    marginBottom: -20,
-    marginTop: 0,
+    marginBottom: -30,
+    marginTop: -35,
   },
   logInButtonText: {
     color: Color.white,
@@ -224,7 +248,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.bodyTextRegular_size,
     fontFamily: FontFamily.uI14Regular,
     color: Color.colorGray_300,
-    marginBottom: -20,
+    marginBottom: -30,
     marginTop: 0,
   },
   socialIcons: {
@@ -270,7 +294,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 50,
   },
   footerLine: {
     width: "80%",

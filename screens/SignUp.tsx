@@ -11,6 +11,14 @@ const SignUp = () => {
   return (
     <View style={styles.signUp}>
       <View style={styles.header}>
+        <View style={styles.languageSelector}>
+          <Text style={styles.languages}>Languages</Text>
+          <Image
+            style={styles.keyboardArrowDown}
+            contentFit="cover"
+            source={require("../assets/keyboard-arrow-down.png")}
+          />
+        </View>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -114,6 +122,31 @@ const SignUp = () => {
 };
 
 const styles = StyleSheet.create({
+  home: {
+    flex: 1,
+    backgroundColor: Color.white,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: Padding.p_base,
+  },
+  languageSelector: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  languages: {
+    fontSize: 12, // Set the desired font size in pixels
+    color: Color.colorDimgray_100,
+    textAlign: "center",
+    fontFamily: FontFamily.uI14Semi,
+    fontWeight: "700", // Make the text bold
+    marginRight: 0,
+    marginLeft: 15,
+  },
+  keyboardArrowDown: {
+    width: 16,
+    height: 16,
+  },
   signUp: {
     flex: 1,
     backgroundColor: Color.white,
@@ -122,7 +155,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 30,
   },
   logoContainer: {
     flexDirection: "row",
