@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     marginHorizontal: 16,
-    marginBottom: 20,
+    marginBottom: -60,
   },
   inputLabel: {
     fontSize: FontSize.uI16Semi_size,
@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: "center",
     marginHorizontal: 16,
-    marginBottom: 30,
+    marginBottom: 100,
+    marginTop: -20,
   },
   resetButtonText: {
     color: Color.white,
