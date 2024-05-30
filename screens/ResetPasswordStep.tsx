@@ -1,119 +1,105 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
-import { Image } from "expo-image";
+import { Text, StyleSheet, View, Pressable, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
 const ResetPasswordStep = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
 
   return (
-    <View style={styles.resetPasswordstep1}>
-      <View style={styles.pageHeader}>
-        <Text style={styles.login}>Login</Text>
-        <Text style={styles.logIn}>Reset your password</Text>
-        <Image
-          style={styles.iconx}
-          contentFit="cover"
-          source={require("../assets/iconx.png")}
-        />
-        <Text style={[styles.right, styles.rightTypo]}>Right</Text>
-      </View>
-      <View style={[styles.termParent, styles.rightPosition]}>
-        <Text style={[styles.term, styles.termTypo]}>Term</Text>
-        <Text style={[styles.introduce, styles.helpTypo]}>Introduce</Text>
-        <Text style={[styles.privacy, styles.helpTypo]}>Privacy</Text>
-        <Text style={[styles.help, styles.helpTypo]}>Help</Text>
-        <Text style={[styles.name2024, styles.termTypo]}>Name © 2024</Text>
-      </View>
-      <View style={[styles.resetPasswordstep1Child, styles.textFieldBorder]} />
-      <View style={styles.logo}>
-        <Image
-          style={[styles.logoChild, styles.childLayout]}
-          contentFit="cover"
-          source={require("../assets/logo2.png")}
-        />
-        <Text style={[styles.kpiEdu, styles.kpiTypo]}>
-          <Text style={styles.kpi}>KPI</Text>
-          <Text style={styles.edu}> Edu</Text>
-        </Text>
-      </View>
-      <View style={[styles.textField, styles.textFieldBorder]}>
-        <View style={styles.inputs}>
-          <Text style={[styles.text, styles.textTypo]}>
-            Enter your email address
-          </Text>
-          <View style={styles.inputsChild} />
-        </View>
-        <Image
-          style={[styles.icons, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/icons.png")}
-        />
-      </View>
-      <View style={[styles.border, styles.rightPosition]} />
-      <View style={[styles.labelParent, styles.labelParentLayout]}>
-        <Text style={[styles.label, styles.textTypo]}>Enter your code</Text>
-        <View style={[styles.passwordHideSee, styles.labelParentLayout]}>
-          <Image
-            style={[styles.icon, styles.iconLayout]}
-            contentFit="cover"
-            source={require("../assets/icon.png")}
-          />
-          <Text style={styles.hide}>Hide</Text>
-        </View>
-      </View>
-      <Pressable
-        style={[styles.backToLoginContainer, styles.rightPosition]}
-        onPress={() => navigation.navigate("LogIn")}
-      >
-        <Text style={[styles.backToLogin, styles.rightTypo]}>
-          Back to Login
-        </Text>
-      </Pressable>
-      <View style={styles.messagereceiveParent}>
-        <View style={styles.messagereceive}>
-          <Image
-            style={[styles.bgIcon, styles.childLayout]}
-            contentFit="cover"
-            source={require("../assets/frame-496071.png")}
-          />
-          <Text style={styles.loremIpsumDolor}>
-            We've just sent an email containing a verification code to your
-            recovery email address. Please check this email for the code and
-            enter below.
-          </Text>
-        </View>
-        <Image
-          style={[styles.groupChild, styles.childLayout]}
-          contentFit="cover"
-          source={require("../assets/group-2.png")}
-        />
-        <Text style={[styles.kpiEdu1, styles.kpiTypo]}>
-          <Text style={styles.kpi}>KPI</Text>
-          <Text style={styles.edu}> Edu</Text>
-        </Text>
-      </View>
-      <Pressable
-        style={[styles.button, styles.buttonLayout]}
-        onPress={() => navigation.navigate("ResetPassword")}
-      >
-        <View style={styles.backWrapper}>
-          <Text style={[styles.back, styles.backTypo]}>Back</Text>
-        </View>
-      </Pressable>
-      <Pressable
-        style={[styles.button1, styles.buttonLayout]}
-        onPress={() => navigation.navigate("ResetPasswordStep1")}
-      >
-        <View style={styles.backWrapper}>
-          <Text style={[styles.submit, styles.backTypo]}>Submit</Text>
-        </View>
-      </Pressable>
+<LinearGradient
+  colors={['#e0f7fa', '#80deea']} // Adjust these colors as needed
+  style={styles.resetPasswordstep1}
+>
+  <View style={styles.pageHeader}>
+    <Text style={styles.login}>Login</Text>
+    <Text style={styles.logIn}>Reset your password</Text>
+    <Image
+      style={styles.iconx}
+      resizeMode="cover"
+      source={require("../assets/iconx.png")}
+    />
+    <Text style={[styles.right, styles.rightTypo]}>Right</Text>
+  </View>
+  <View style={[styles.termParent, styles.rightPosition]}>
+    <Text style={[styles.term, styles.termTypo]}>Term</Text>
+    <Text style={[styles.introduce, styles.helpTypo]}>Introduce</Text>
+    <Text style={[styles.privacy, styles.helpTypo]}>Privacy</Text>
+    <Text style={[styles.help, styles.helpTypo]}>Help</Text>
+    <Text style={[styles.name2024, styles.termTypo]}>Name © 2024</Text>
+  </View>
+  <View style={[styles.resetPasswordstep1Child, styles.textFieldBorder]} />
+  <View style={styles.logo}>
+    <Image
+      style={[styles.logoChild, styles.childLayout]}
+      resizeMode="cover"
+      source={require("../assets/logo2.png")}
+    />
+    <Text style={[styles.kpiEdu, styles.kpiTypo]}>
+      <Text style={styles.kpi}>KPI</Text>
+      <Text style={styles.edu}> Edu</Text>
+    </Text>
+  </View>
+  <View style={[styles.textField, styles.textFieldBorder]}>
+    <Image
+      style={[styles.icons, styles.iconLayout]}
+      resizeMode="cover"
+      source={require("../assets/icons.png")}
+    />
+  </View>
+  <View style={[styles.border, styles.rightPosition]} />
+  <View style={[styles.labelParent, styles.labelParentLayout]}>
+    <Text style={[styles.label, styles.textTypo]}>Enter your code</Text>
+    <View style={[styles.passwordHideSee, styles.labelParentLayout]}>
+      <Image
+        style={[styles.icon, styles.iconLayout]}
+        resizeMode="cover"
+        source={require("../assets/icon.png")}
+      />
+      <Text style={styles.hide}>Hide</Text>
     </View>
+  </View>
+  <Pressable
+    style={[styles.backToLoginContainer, styles.rightPosition]}
+    onPress={() => navigation.navigate("LogIn")}
+  >
+    <Text style={[styles.backToLogin, styles.rightTypo]}>
+      Back to Login
+    </Text>
+  </Pressable>
+  <View style={styles.messagereceiveParent}>
+    <View style={styles.messagereceive}>
+      <Text style={styles.loremIpsumDolor}>
+        We've just sent an email containing a verification code to your
+        recovery email address. Please check this email for the code and
+        enter below.
+      </Text>
+    </View>
+  </View>
+  <Pressable
+    style={[styles.button, styles.buttonLayout]}
+    onPress={() => navigation.navigate("ResetPassword")}
+  >
+    <View style={styles.backWrapper}>
+      <Text style={[styles.back, styles.backTypo]}>Back</Text>
+    </View>
+  </Pressable>
+  <Pressable
+    style={[styles.button1, styles.buttonLayout]}
+    onPress={() => navigation.navigate("ResetPasswordStep1")}
+  >
+    <View style={styles.backWrapper}>
+      <Text style={[styles.submit, styles.backTypo]}>Submit</Text>
+    </View>
+  </Pressable>
+</LinearGradient>
+
   );
 };
+
+
 
 const styles = StyleSheet.create({
   rightTypo: {

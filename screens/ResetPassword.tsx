@@ -2,13 +2,17 @@ import * as React from "react";
 import { Text, StyleSheet, View, Pressable, TextInput, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
 const ResetPassword = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
 
   return (
-    <View style={styles.resetPassword}>
+    <LinearGradient
+      colors={['#e0f7fa', '#80deea']} // You can adjust these colors to match your design
+      style={styles.resetPassword}
+    >
       <Pressable
         style={styles.backButtonWrapper}
         onPress={() => navigation.navigate("LogIn")}
@@ -54,7 +58,7 @@ const ResetPassword = () => {
       <Pressable
         style={styles.resetButton}
         onPress={() => {
-          /* Handle password reset */
+          navigation.navigate("ResetPasswordStep"); // Adjust this to the correct screen name
         }}
       >
         <Text style={styles.resetButtonText}>Send password reset email</Text>
@@ -69,14 +73,13 @@ const ResetPassword = () => {
         </View>
         <Text style={styles.footerCopyright}>Name © 2024</Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   resetPassword: {
     flex: 1,
-    backgroundColor: Color.white,
     paddingHorizontal: 16,
     justifyContent: "space-between",
   },
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
   },
   languages: {
     fontSize: 12,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "700",
@@ -140,6 +143,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     marginHorizontal: 16,
+    marginTop: -40,
   },
   messageText: {
     fontSize: FontSize.uI16Semi_size,
@@ -149,21 +153,22 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     marginHorizontal: 16,
-    marginBottom: -60,
+    marginBottom: -20,
   },
   inputLabel: {
     fontSize: FontSize.uI16Semi_size,
     color: Color.gray04,
     fontFamily: FontFamily.uI16Medium,
     marginBottom: 10,
+    marginTop: -10,
   },
   inputField: {
-    borderWidth: 1,
     borderColor: Color.colorDimgray_400,
     borderRadius: Border.br_xs,
     padding: 10,
     fontSize: FontSize.uI16Semi_size,
     fontFamily: FontFamily.uI14Regular,
+    backgroundColor: "#f1f1f1", // Setting background color to white
   },
   resetButton: {
     backgroundColor: Color.colorRoyalblue_100,
@@ -172,7 +177,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 16,
     marginBottom: 100,
-    marginTop: -20,
+    marginTop: -60,
   },
   resetButtonText: {
     color: Color.white,
@@ -183,7 +188,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 50,
+    marginBottom: 30,
   },
   footerLine: {
     width: "80%",
@@ -199,14 +204,14 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
   },
   footerCopyright: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",

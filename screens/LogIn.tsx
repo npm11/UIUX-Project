@@ -1,40 +1,24 @@
-import * as React from "react";
-import { Text, StyleSheet, View, Pressable, TouchableOpacity } from "react-native";
-import { Image } from "expo-image";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation, ParamListBase } from "@react-navigation/native";
+import * as React from 'react';
+import { Text, StyleSheet, View, Pressable, TouchableOpacity, TextInput } from 'react-native';
+import { Image } from 'expo-image';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Padding, Border } from '../GlobalStyles';
 
 const LogIn = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
-  const [rememberMe, setRememberMe] = React.useState(false);
-
-  const toggleRememberMe = () => {
-    setRememberMe(!rememberMe);
-  };
 
   return (
-    <LinearGradient
-      colors={['#e0f7fa', '#80deea']}
-      style={styles.gradient}
-    >
+    <LinearGradient colors={['#e0f7fa', '#80deea']} style={styles.gradient}>
       <View style={styles.logIn}>
         <View style={styles.header}>
           <View style={styles.languageSelector}>
             <Text style={styles.languages}>Languages</Text>
-            <Image
-              style={styles.keyboardArrowDown}
-              contentFit="cover"
-              source={require("../assets/keyboard-arrow-down.png")}
-            />
+            <Image style={styles.keyboardArrowDown} contentFit="cover" source={require("../assets/keyboard-arrow-down.png")} />
           </View>
           <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              contentFit="cover"
-              source={require("../assets/logo2.png")}
-            />
+            <Image style={styles.logo} contentFit="cover" source={require("../assets/logo2.png")} />
             <Text style={styles.kpiEdu}>
               <Text style={styles.kpi}>KPI</Text>
               <Text style={styles.edu}> Edu</Text>
@@ -44,58 +28,38 @@ const LogIn = () => {
         </View>
         <View style={styles.inputContainer}>
           <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
+            <TextInput
+              placeholder="Email"
+              style={[styles.inputField, {backgroundColor: '#f1f1f1'}]}
+              keyboardType="email-address"
             />
-            <Text style={styles.inputLabel}>Email</Text>
           </View>
           <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
+            <TextInput
+              placeholder="Password"
+              style={[styles.inputField, {backgroundColor: '#f1f1f1'}]}
+              secureTextEntry={true}
             />
-            <Text style={styles.inputLabel}>Password</Text>
             <Text style={styles.show}>Show</Text>
           </View>
-          <Pressable
-            style={styles.forgetPassword}
-            onPress={() => navigation.navigate("ResetPassword")}
-          >
+          <Pressable style={styles.forgetPassword} onPress={() => navigation.navigate("ResetPassword")}>
             <Text style={styles.forgetPasswordText}>Forget your password?</Text>
           </Pressable>
         </View>
-        <Pressable
-          style={styles.logInButton}
-          onPress={() => navigation.navigate("Activities")}
-        >
+        <Pressable style={styles.logInButton} onPress={() => navigation.navigate("Activities")}>
           <Text style={styles.logInButtonText}>Log In</Text>
         </Pressable>
         <Text style={styles.orLogInWith}>Or Log In With</Text>
         <View style={styles.socialIcons}>
-          <Image
-            style={styles.socialIcon}
-            contentFit="cover"
-            source={require("../assets/googleicon.png")}
-          />
-          <Image
-            style={styles.socialIcon}
-            contentFit="cover"
-            source={require("../assets/facebookicon.png")}
-          />
+          <Image style={styles.socialIcon} contentFit="cover" source={require("../assets/googleicon.png")} />
+          <Image style={styles.socialIcon} contentFit="cover" source={require("../assets/facebookicon.png")} />
         </View>
         <View style={styles.dontHaveAnAccountContainer}>
           <Text style={styles.dontHaveAnAccount}>Don’t have an account?</Text>
-
         </View>
-        <Pressable
-            style={styles.signUpButton}
-            onPress={() => navigation.navigate("SignUp")}
-          >
-            <Text style={styles.signUpButtonText}>Sign Up</Text>
-          </Pressable>
+        <Pressable style={styles.signUpButton} onPress={() => navigation.navigate("SignUp")}>
+          <Text style={styles.signUpButtonText}>Sign Up</Text>
+        </Pressable>
         <View style={styles.footer}>
           <View style={styles.footerLine} />
           <View style={styles.footerLinks}>
@@ -129,7 +93,7 @@ const styles = StyleSheet.create({
   },
   languages: {
     fontSize: 12,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "700",
@@ -184,20 +148,14 @@ const styles = StyleSheet.create({
     position: "relative",
     width: "100%",
   },
-  bgIcon: {
-    width: "100%",
+  inputField: {
+    width: '100%',
     height: 50,
     borderRadius: Border.br_5xs,
-  },
-  inputLabel: {
-    position: "absolute",
-    left: 16,
-    top: "50%",
-    marginTop: -9,
-    color: Color.gray03,
-    fontFamily: FontFamily.uI16Medium,
-    fontWeight: "500",
+    paddingHorizontal: Padding.p_base,
     fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI16Medium,
+    fontWeight: '500',
   },
   show: {
     position: "absolute",
@@ -219,11 +177,6 @@ const styles = StyleSheet.create({
     color: Color.colorGray_400,
     fontSize: FontSize.uI14Regular_size,
     fontFamily: FontFamily.uI16Medium,
-  },
-  checkboxIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
   },
   logInButton: {
     backgroundColor: Color.colorRoyalblue_100,
@@ -285,14 +238,10 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
   },
-  signUp: {
-    textDecorationLine: "underline",
-    color: Color.colorGray_400,
-  },
   footer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 30,
   },
   footerLine: {
     width: "80%",
@@ -308,14 +257,14 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
   },
   footerCopyright: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",

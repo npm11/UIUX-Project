@@ -1,35 +1,24 @@
-import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
-import { Image } from "expo-image";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation, ParamListBase } from "@react-navigation/native";
+import * as React from 'react';
+import { Text, StyleSheet, View, Pressable, TextInput } from 'react-native';
+import { Image } from 'expo-image';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { FontFamily, FontSize, Color, Border, Padding } from "../GlobalStyles";
+import { FontFamily, FontSize, Color, Border, Padding } from '../GlobalStyles';
 
 const SignUp = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
 
   return (
-    <LinearGradient
-      colors={['#e0f7fa', '#80deea']}
-      style={styles.gradient}
-    >
+    <LinearGradient colors={['#e0f7fa', '#80deea']} style={styles.gradient}>
       <View style={styles.signUp}>
         <View style={styles.header}>
           <View style={styles.languageSelector}>
             <Text style={styles.languages}>Languages</Text>
-            <Image
-              style={styles.keyboardArrowDown}
-              contentFit="cover"
-              source={require("../assets/keyboard-arrow-down.png")}
-            />
+            <Image style={styles.keyboardArrowDown} contentFit="cover" source={require("../assets/keyboard-arrow-down.png")} />
           </View>
           <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              contentFit="cover"
-              source={require("../assets/logo2.png")}
-            />
+            <Image style={styles.logo} contentFit="cover" source={require("../assets/logo2.png")} />
             <Text style={styles.kpiEdu}>
               <Text style={styles.kpi}>KPI</Text>
               <Text style={styles.edu}> Edu</Text>
@@ -38,40 +27,25 @@ const SignUp = () => {
           <Text style={styles.createAnAccount}>Create an account</Text>
         </View>
         <View style={styles.inputContainer}>
-          <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
-            />
-            <Text style={styles.inputLabel}>Name</Text>
-          </View>
-          <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
-            />
-            <Text style={styles.inputLabel}>Email</Text>
-          </View>
-          <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
-            />
-            <Text style={styles.inputLabel}>Password</Text>
-            <Text style={styles.show}>Show</Text>
-          </View>
-          <View style={styles.inputText}>
-            <Image
-              style={styles.bgIcon}
-              contentFit="cover"
-              source={require("../assets/bg.png")}
-            />
-            <Text style={styles.inputLabel}>Confirm your password</Text>
-            <Text style={styles.show}>Show</Text>
-          </View>
+          <TextInput
+            placeholder="Name"
+            style={styles.inputField}
+          />
+          <TextInput
+            placeholder="Email"
+            keyboardType="email-address"
+            style={styles.inputField}
+          />
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={true}
+            style={styles.inputField}
+          />
+          <TextInput
+            placeholder="Confirm your password"
+            secureTextEntry={true}
+            style={styles.inputField}
+          />
         </View>
         <View style={styles.checkboxContainer}>
           <View style={styles.checkbox}>
@@ -83,7 +57,7 @@ const SignUp = () => {
             />
           </View>
           <Text style={styles.checkboxLabel}>
-          I agree to send your newsletter and other promotion information to my email.
+            I agree to send your newsletter and other promotion information to my email.
           </Text>
         </View>
         <Pressable onPress={() => navigation.navigate("LogIn")}>
@@ -135,6 +109,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: Padding.p_base,
+  },
+  inputField: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#f1f1f1',  // Set the background color
+    paddingHorizontal: Padding.p_base,
+    fontSize: FontSize.uI16Semi_size,
+    fontFamily: FontFamily.uI16Medium,
+    marginBottom: 20,
+    borderRadius: Border.br_5xs,
   },
   languageSelector: {
     flexDirection: "row",
@@ -313,7 +297,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 30,
   },
   footerLine: {
     width: "80%",
@@ -329,14 +313,14 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
   },
   footerCopyright: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
