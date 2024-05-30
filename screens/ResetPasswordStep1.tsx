@@ -32,7 +32,7 @@ const ResetPasswordStep1 = () => {
         <Image
           style={[styles.logoChild, styles.childLayout]}
           contentFit="cover"
-          source={require("../assets/group-1.png")}
+          source={require("../assets/logo2.png")}
         />
         <Text style={[styles.kpiEdu, styles.kpiTypo]}>
           <Text style={styles.kpi}>KPI</Text>

@@ -1,14 +1,18 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable, Modal, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, Pressable, Modal, TouchableOpacity, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { Padding, Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 
 const Home = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
   const [languageModalVisible, setLanguageModalVisible] = React.useState(false);
   const [selectedLanguage, setSelectedLanguage] = React.useState("Languages");
+
+  const { width, height } = useWindowDimensions();
+  const isPortrait = height > width;
 
   const toggleLanguageModal = () => {
     setLanguageModalVisible(!languageModalVisible);
@@ -20,8 +24,11 @@ const Home = () => {
   };
 
   return (
-    <View style={styles.home}>
-      <View style={styles.header}>
+    <LinearGradient
+      colors={['#e0f7fa', '#80deea']}
+      style={styles.home}
+    >
+      <View style={isPortrait ? styles.header : styles.headerLandscape}>
         <Pressable style={styles.languageSelector} onPress={toggleLanguageModal}>
           <Text style={styles.languages}>{selectedLanguage}</Text>
           <Image
@@ -34,7 +41,7 @@ const Home = () => {
           <Image
             style={styles.logo}
             contentFit="cover"
-            source={require("../assets/group-1.png")}
+            source={require("../assets/logo2.png")}
           />
           <Text style={styles.kpiEdu}>
             <Text style={styles.kpi}>KPI</Text>
@@ -96,14 +103,13 @@ const Home = () => {
         </View>
         <Text style={styles.footerCopyright}>Name © 2024</Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   home: {
     flex: 1,
-    backgroundColor: Color.white,
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: Padding.p_base,
@@ -112,17 +118,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
+  headerLandscape: {
+    alignItems: "center",
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 20,
+  },
   languageSelector: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 20,
   },
   languages: {
-    fontSize: 12, // Set the desired font size in pixels
+    fontSize: 12,
     color: Color.colorDimgray_100,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
-    fontWeight: "700", // Make the text bold
+    fontWeight: "700",
     marginRight: 0,
     marginLeft: 15,
   },
@@ -135,7 +149,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 44,
+    width: 61.3,
     height: 51,
   },
   kpiEdu: {
@@ -204,14 +218,14 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",
   },
   footerCopyright: {
     fontSize: FontSize.bodyTextRegular_size,
-    color: Color.colorDimgray_100,
+    color: Color.peakPrimary,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
     fontWeight: "600",

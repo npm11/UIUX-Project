@@ -29,7 +29,7 @@ const ResetPassword = () => {
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
-            source={require("../assets/group-1.png")}
+            source={require("../assets/logo2.png")}
           />
           <Text style={styles.kpiEdu}>
             <Text style={styles.kpi}>KPI</Text>
@@ -45,7 +45,11 @@ const ResetPassword = () => {
       </View>
       <View style={styles.inputWrapper}>
         <Text style={styles.inputLabel}>Email address</Text>
-        <TextInput style={styles.inputField} placeholder="Enter your email" />
+        <TextInput 
+          style={styles.inputField} 
+          placeholder="Enter your email" 
+          editable={false} 
+        />
       </View>
       <Pressable
         style={styles.resetButton}
@@ -113,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 44,
+    width: 61.3,
     height: 51,
   },
   kpiEdu: {

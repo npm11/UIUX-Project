@@ -3,128 +3,135 @@ import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { FontFamily, FontSize, Color, Border, Padding } from "../GlobalStyles";
 
 const SignUp = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
 
   return (
-    <View style={styles.signUp}>
-      <View style={styles.header}>
-        <View style={styles.languageSelector}>
-          <Text style={styles.languages}>Languages</Text>
-          <Image
-            style={styles.keyboardArrowDown}
-            contentFit="cover"
-            source={require("../assets/keyboard-arrow-down.png")}
-          />
+    <LinearGradient
+      colors={['#e0f7fa', '#80deea']}
+      style={styles.gradient}
+    >
+      <View style={styles.signUp}>
+        <View style={styles.header}>
+          <View style={styles.languageSelector}>
+            <Text style={styles.languages}>Languages</Text>
+            <Image
+              style={styles.keyboardArrowDown}
+              contentFit="cover"
+              source={require("../assets/keyboard-arrow-down.png")}
+            />
+          </View>
+          <View style={styles.logoContainer}>
+            <Image
+              style={styles.logo}
+              contentFit="cover"
+              source={require("../assets/logo2.png")}
+            />
+            <Text style={styles.kpiEdu}>
+              <Text style={styles.kpi}>KPI</Text>
+              <Text style={styles.edu}> Edu</Text>
+            </Text>
+          </View>
+          <Text style={styles.createAnAccount}>Create an account</Text>
         </View>
-        <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            contentFit="cover"
-            source={require("../assets/group-1.png")}
-          />
-          <Text style={styles.kpiEdu}>
-            <Text style={styles.kpi}>KPI</Text>
-            <Text style={styles.edu}> Edu</Text>
+        <View style={styles.inputContainer}>
+          <View style={styles.inputText}>
+            <Image
+              style={styles.bgIcon}
+              contentFit="cover"
+              source={require("../assets/bg.png")}
+            />
+            <Text style={styles.inputLabel}>Name</Text>
+          </View>
+          <View style={styles.inputText}>
+            <Image
+              style={styles.bgIcon}
+              contentFit="cover"
+              source={require("../assets/bg.png")}
+            />
+            <Text style={styles.inputLabel}>Email</Text>
+          </View>
+          <View style={styles.inputText}>
+            <Image
+              style={styles.bgIcon}
+              contentFit="cover"
+              source={require("../assets/bg.png")}
+            />
+            <Text style={styles.inputLabel}>Password</Text>
+            <Text style={styles.show}>Show</Text>
+          </View>
+          <View style={styles.inputText}>
+            <Image
+              style={styles.bgIcon}
+              contentFit="cover"
+              source={require("../assets/bg.png")}
+            />
+            <Text style={styles.inputLabel}>Confirm your password</Text>
+            <Text style={styles.show}>Show</Text>
+          </View>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <View style={styles.checkbox}>
+            <View style={styles.checkboxBg} />
+            <Image
+              style={styles.checkboxIcon}
+              contentFit="cover"
+              source={require("../assets/iconcheckmark.png")}
+            />
+          </View>
+          <Text style={styles.checkboxLabel}>
+          I agree to send your newsletter and other promotion information to my email.
           </Text>
         </View>
-        <Text style={styles.createAnAccount}>Create an account</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <View style={styles.inputText}>
-          <Image
-            style={styles.bgIcon}
-            contentFit="cover"
-            source={require("../assets/bg.png")}
-          />
-          <Text style={styles.inputLabel}>Name</Text>
-        </View>
-        <View style={styles.inputText}>
-          <Image
-            style={styles.bgIcon}
-            contentFit="cover"
-            source={require("../assets/bg.png")}
-          />
-          <Text style={styles.inputLabel}>Email</Text>
-        </View>
-        <View style={styles.inputText}>
-          <Image
-            style={styles.bgIcon}
-            contentFit="cover"
-            source={require("../assets/bg.png")}
-          />
-          <Text style={styles.inputLabel}>Password</Text>
-          <Text style={styles.show}>Show</Text>
-        </View>
-        <View style={styles.inputText}>
-          <Image
-            style={styles.bgIcon}
-            contentFit="cover"
-            source={require("../assets/bg.png")}
-          />
-          <Text style={styles.inputLabel}>Confirm your password</Text>
-          <Text style={styles.show}>Show</Text>
-        </View>
-      </View>
-      <View style={styles.checkboxContainer}>
-        <View style={styles.checkbox}>
-          <View style={styles.checkboxBg} />
-          <Image
-            style={styles.checkboxIcon}
-            contentFit="cover"
-            source={require("../assets/iconcheckmark.png")}
-          />
-        </View>
-        <Text style={styles.checkboxLabel}>
-          I would like to receive your newsletter and other promotional
-          information.
-        </Text>
-      </View>
-      <Pressable onPress={() => navigation.navigate("LogIn")}>
-        <Text style={styles.alreadyHaveAnAccount}>
-          Already have an account? <Text style={styles.logIn}>Log in</Text>
-        </Text>
-      </Pressable>
-      <Pressable
-        style={styles.signUpButton}
-        onPress={() => navigation.navigate("Activities")}
-      >
-        <Text style={styles.signUpButtonText}>Sign Up</Text>
-      </Pressable>
+        <Pressable onPress={() => navigation.navigate("LogIn")}>
+          <Text style={styles.alreadyHaveAnAccount}>
+            Already have an account? <Text style={styles.logIn}>Log in</Text>
+          </Text>
+        </Pressable>
+        <Pressable
+          style={styles.signUpButton}
+          onPress={() => navigation.navigate("Activities")}
+        >
+          <Text style={styles.signUpButtonText}>Sign Up</Text>
+        </Pressable>
 
-      <Text style={styles.orSignUpWith}>Or Sign Up With</Text>
-      <View style={styles.socialIcons}>
-        <Image
-          style={[styles.socialIcon, styles.googleIcon]}
-          contentFit="cover"
-          source={require("../assets/googleicon.png")}
-        />
-        <Image
-          style={[styles.socialIcon, styles.facebookIcon]}
-          contentFit="cover"
-          source={require("../assets/facebookicon.png")}
-        />
-      </View>
-      <View style={styles.footer}>
-        <View style={styles.footerLine} />
-        <View style={styles.footerLinks}>
-          <Text style={styles.footerText}>Introduce</Text>
-          <Text style={styles.footerText}>Term</Text>
-          <Text style={styles.footerText}>Privacy</Text>
-          <Text style={styles.footerText}>Help</Text>
+        <Text style={styles.orSignUpWith}>Or Sign Up With</Text>
+        <View style={styles.socialIcons}>
+          <Image
+            style={[styles.socialIcon, styles.googleIcon]}
+            contentFit="cover"
+            source={require("../assets/googleicon.png")}
+          />
+          <Image
+            style={[styles.socialIcon, styles.facebookIcon]}
+            contentFit="cover"
+            source={require("../assets/facebookicon.png")}
+          />
         </View>
-        <Text style={styles.footerCopyright}>Name © 2024</Text>
+        <View style={styles.footer}>
+          <View style={styles.footerLine} />
+          <View style={styles.footerLinks}>
+            <Text style={styles.footerText}>Introduce</Text>
+            <Text style={styles.footerText}>Term</Text>
+            <Text style={styles.footerText}>Privacy</Text>
+            <Text style={styles.footerText}>Help</Text>
+          </View>
+          <Text style={styles.footerCopyright}>Name © 2024</Text>
+        </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  home: {
+  gradient: {
     flex: 1,
-    backgroundColor: Color.white,
+  },
+  signUp: {
+    flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: Padding.p_base,
@@ -133,25 +140,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 20,
+    marginTop: -10,
   },
   languages: {
-    fontSize: 12, // Set the desired font size in pixels
+    fontSize: 12,
     color: Color.colorDimgray_100,
     textAlign: "center",
     fontFamily: FontFamily.uI14Semi,
-    fontWeight: "700", // Make the text bold
+    fontWeight: "700",
     marginRight: 0,
     marginLeft: 15,
   },
   keyboardArrowDown: {
     width: 16,
     height: 16,
-  },
-  signUp: {
-    flex: 1,
-    backgroundColor: Color.white,
-    paddingHorizontal: 16,
-    justifyContent: "space-between",
   },
   header: {
     alignItems: "center",
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logo: {
-    width: 44,
+    width: 61.3,
     height: 51,
   },
   kpiEdu: {
@@ -189,10 +191,12 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 0,
+    width: "92%",
   },
   inputText: {
     marginBottom: 20,
     position: "relative",
+    width: "100%",
   },
   bgIcon: {
     width: "100%",
@@ -219,14 +223,26 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: FontSize.uI16Semi_size,
   },
+  forgetPassword: {
+    alignSelf: "flex-end",
+    marginBottom: -10,
+    marginTop:-7,
+  },
+  forgetPasswordText: {
+    textDecorationLine: "underline",
+    color: Color.colorGray_400,
+    fontSize: FontSize.uI14Regular_size,
+    fontFamily: FontFamily.uI16Medium,
+  },
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 12,
-    marginTop: -20,
+    marginBottom: 20,
+    marginTop: -10,
+    paddingHorizontal: 20,
   },
   checkbox: {
-    marginRight: 10,
+    marginRight: 11,
     position: "relative",
   },
   checkboxBg: {
@@ -255,7 +271,9 @@ const styles = StyleSheet.create({
     borderRadius: Border.br_81xl,
     paddingVertical: Padding.p_base,
     alignItems: "center",
-    marginBottom: 0,
+    width: "200%",
+    maxWidth: 380,
+    marginBottom: 10,
   },
   signUpButtonText: {
     color: Color.white,
@@ -268,7 +286,8 @@ const styles = StyleSheet.create({
     color: Color.colorDarkslategray_100,
     fontSize: FontSize.size_smi,
     fontFamily: FontFamily.poppinsRegular,
-    marginBottom: 0,
+    marginBottom: 10,
+    marginTop: 0,
   },
   logIn: {
     textDecorationLine: "underline",
@@ -279,7 +298,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.bodyTextRegular_size,
     fontFamily: FontFamily.uI14Regular, // Changed to regular font
     color: Color.colorGray_300,
-    marginBottom: 0,
+    marginBottom: 10,
   },
   socialIcons: {
     flexDirection: "row",
@@ -294,7 +313,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 20,
   },
   footerLine: {
     width: "80%",
